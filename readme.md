@@ -1,4 +1,4 @@
-# nSpaces Backend
+# Spacesio Backend
 
 A FastAPI-based backend for collaborative knowledge spaces.
 It supports **real-time messaging, document uploads, and retrieval-augmented generation (RAG)** powered by vector search.
@@ -48,8 +48,7 @@ It supports **real-time messaging, document uploads, and retrieval-augmented gen
 ### 1. Clone repo
 
 ```bash
-git clone https://github.com/your-org/nspaces-backend.git
-cd nspaces-backend
+git clone https://github.com/musaib-js/spaceio-ai-service
 ```
 
 ### 2. Install dependencies

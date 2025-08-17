@@ -1,0 +1,11 @@
+fastapi
+pydantic
+pymongo
+redis
+google
+google-generativeai
+pinecone
+uvicorn
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart

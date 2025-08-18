@@ -468,8 +468,15 @@ async def register(body: UserCreate):
         "name": body.name or body.email.split("@")[0],
         "password": hash_password(body.password),
         "created_at": now_utc(),
+        "verified": False
     }
     mdb.users.insert_one(user)
+    
+    return {
+        "message": "You've successfully joined the waiting list. Stay tuned in your inbox for updates!",
+        "status": "Success"
+    }
+    # After full launch
     token = create_access_token({"sub": user["_id"], "email": user["email"]})
     refresh_token = create_refresh_token({"sub": user["_id"], "email": user["email"]})
     return Token(
@@ -484,6 +491,8 @@ async def register(body: UserCreate):
 @app.post("/auth/token", response_model=Token)
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = mdb.users.find_one({"email": form_data.username})
+    if not user["verified"]:
+        raise HTTPException(403, detail="You're still there in the waiting list. Stay tuned for updates!")
     if not user or not verify_password(form_data.password, user["password"]):
         raise HTTPException(401, detail="Invalid credentials")
     token = create_access_token({"sub": user["_id"], "email": user["email"]})

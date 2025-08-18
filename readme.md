@@ -1,4 +1,4 @@
-# Spacesio Backend
+# Spacio Backend
 
 A FastAPI-based backend for collaborative knowledge spaces.
 It supports **real-time messaging, document uploads, and retrieval-augmented generation (RAG)** powered by vector search.
